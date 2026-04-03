@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gruppestilt</title>
+  <meta name="description" content="Gruppestilt.xyz – enkel oversiktsside med kategorier og kontaktinfo." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(15, 23, 42, 0.72);
+      --card-hover: rgba(30, 41, 59, 0.82);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background: #020617;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(2,6,23,0.55), rgba(2,6,23,0.75)),
+        url('https://cdn.discordapp.com/attachments/1228790699722543227/1489769610331816127/image.png?ex=69d19f91&is=69d04e11&hm=6f8fbb8dad5f7a522cb5b0af54d1aedab0d6c26079a115a3e9c545a22dc525cc&') center/cover no-repeat;
+      filter: blur(10px);
+      transform: scale(1.08);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 35%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(760px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 34px 0 40px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(34px, 6vw, 60px);
+      letter-spacing: -0.05em;
+    }
+
+
+    .hero-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 26px 0;
+    }
+
+    .menu-btn {
+      position: relative;
+      min-height: 120px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      isolation: isolate;
+    }
+
+    .menu-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      filter: blur(6px);
+      transform: scale(1.08);
+      opacity: 0.75;
+      z-index: -2;
+    }
+
+    .menu-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(15,23,42,0.5), rgba(15,23,42,0.72));
+      z-index: -1;
+    }
+
+    .menu-btn span {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-shadow: 0 3px 14px rgba(0,0,0,0.35);
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-2px);
+      background: var(--card-hover);
+      transition: 0.18s ease;
+    }
+
+    .info-box {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .info-box h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .info-box p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .contact-item span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Gruppestilt.xyz</h1>
+      <div class="hero-image"></div>
+    </section>
+
+    <section class="button-grid">
+      <a class="menu-btn" href="borsa.html" style="--bg-image:url('https://images.squarespace-cdn.com/content/v1/684f4bda3ef6cc183fc91b82/9f01600c-1d14-44ec-be8e-9792b27e44be/B%C3%B8rsa10.jpg?format=750w');">
+        <span>Børsa</span>
+      </a>
+      <a class="menu-btn" href="koia.html" style="--bg-image:url('https://images.squarespace-cdn.com/content/v1/684f4bda3ef6cc183fc91b82/2e537706-0c1c-4caa-a6f4-67c0aab160f5/Koia9.jpg?format=750w');">
+        <span>Koia</span>
+      </a>
+      <a class="menu-btn" href="bautan.html" style="--bg-image:url('https://images.squarespace-cdn.com/content/v1/684f4bda3ef6cc183fc91b82/1762262852679-IPANKSKX8SDOYJI9YBR8/8749821471.png?format=750w');">
+        <span>Bautan</span>
+      </a>
+      <a class="menu-btn" href="sinnataggen.html" style="--bg-image:url('https://images.squarespace-cdn.com/content/v1/684f4bda3ef6cc183fc91b82/a4ee9a3d-fa24-4883-baff-07aa8c4b8f44/dadaland+2013+2.jpg?format=750w');">
+        <span>Sinnataggen</span>
+      </a>
+    </section>
+
+    <section class="info-box">
+      <h2>Kontakt og info</h2>
+      <p>Denne nettsiden ble laget fordi Sidestilt kosta penger og russebuss.xyz ikke var helt up to date med de fleste busser. Håper dere liker den</p>
+      <p>Visst du vet om noen busser som mangler så kan du ta kontakt på enten E-post eller Instagram. (Større sjanse for at jeg ser det om det er på Instagram)</p>
+
+      <div class="contact-list">
+        <div class="contact-item">
+          <strong>E-post</strong>
+          <span>bloomiegt@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <strong>Instagram</strong>
+          <span>@m4rc08567</span>
+        </div>
+        <div class="contact-item">
+          <strong>Info</strong>
+          <span>Send inn bilder, bussnavn, årstall og hvilken skole bussen kom fra.</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Gruppestilt.xyz
+    </footer>
+  </div>
+</body>
+</html>
