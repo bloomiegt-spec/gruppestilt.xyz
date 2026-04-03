@@ -3,257 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gruppestilt.xyz</title>
-  <meta name="description" content="Finn alt av info du trenger til alle russebusser" />
+  <title>Gruppe Stilt</title>
   <style>
     :root {
       --bg: #0b1020;
-      --bg-2: #121a33;
-      --card: rgba(255,255,255,0.06);
-      --card-strong: rgba(255,255,255,0.1);
+      --card: #11182d;
+      --card-2: #18223d;
       --text: #f8fafc;
-      --muted: #cbd5e1;
-      --line: rgba(255,255,255,0.12);
+      --muted: #a5b4fc;
+      --soft: #94a3b8;
       --accent: #60a5fa;
-      --accent-2: #a78bfa;
-      --max: 1180px;
-      --shadow: 0 22px 60px rgba(0,0,0,0.35);
-      --radius: 24px;
+      --line: rgba(255,255,255,0.08);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #070b16 0%, #0b1020 100%);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(167,139,250,0.18), transparent 24%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(1100px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .site-header {
+    .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-      background: rgba(11, 16, 32, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(11, 16, 32, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      z-index: 20;
     }
 
-    .header-inner {
+    .topbar-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 12px;
+      min-height: 70px;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      box-shadow: var(--shadow);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    nav a {
-      color: var(--muted);
-      padding: 10px 14px;
+    .back-btn {
+      padding: 10px 16px;
       border-radius: 999px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
+      background: var(--card);
+      border: 1px solid var(--line);
+      font-weight: 600;
     }
 
     .hero {
-      padding: 72px 0 40px;
+      padding: 60px 0 30px;
     }
 
-    .hero-grid {
+    .hero-box {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(42px, 7vw, 82px);
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 6vw, 72px);
       line-height: 0.95;
       letter-spacing: -0.05em;
     }
 
-    .lead {
-      color: var(--muted);
-      font-size: clamp(18px, 2.3vw, 22px);
-      max-width: 720px;
-      margin-bottom: 28px;
+    .hero p {
+      margin: 0 0 22px;
+      color: var(--soft);
+      font-size: 18px;
+      max-width: 650px;
     }
 
-    .hero-actions {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 16px;
-      font-weight: 700;
-      border: 1px solid var(--line);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      border: none;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-    }
-
-    .hero-card,
-    .card,
-    .timeline-card,
-    .gallery-item,
-    .info-panel {
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-
-    .hero-card {
-      overflow: hidden;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .hero-image {
-      min-height: 500px;
+      min-height: 340px;
+      border-radius: 24px;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.55)),
-        url('https://cdn.discordapp.com/attachments/1408149621473153157/1489734506301751306/asfafsd.jpg?ex=69d17ee0&is=69d02d60&hm=869df9cdeba62b0b9db9a07ce942928e5dc4298f90798bd9c630bbb21f91b69f&') center/cover;
-      display: flex;
-      align-items: end;
-      padding: 24px;
-    }
-
-    .hero-image-note {
-      margin: 0;
-      max-width: 300px;
-      color: #e2e8f0;
-      background: rgba(11,16,32,0.7);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 14px 16px;
-      font-size: 14px;
-    }
-
-    section {
-      padding: 28px 0 44px;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 22px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 8px;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .stat {
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.05);
+        linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.5)),
+        url("https://images.unsplash.com/photo-1517167685281-b2fcfc8de036?auto=format&fit=crop&w=1400&q=80") center/cover;
       border: 1px solid var(--line);
     }
 
-    .stat strong {
-      display: block;
-      font-size: 34px;
-      line-height: 1;
-      margin-bottom: 8px;
+    section {
+      padding: 24px 0;
     }
 
-    .stat span { color: var(--muted); }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+    }
 
-    .cards {
+    .section-text {
+      margin: 0 0 20px;
+      color: var(--soft);
+      max-width: 760px;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
     .card {
-      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
     }
 
     .card h3 {
@@ -261,61 +152,59 @@
       font-size: 22px;
     }
 
-    .card p, .card li { color: var(--muted); }
-    .card ul { margin: 12px 0 0; padding-left: 18px; }
+    .card p {
+      margin: 0;
+      color: var(--soft);
+    }
 
     .timeline {
       display: grid;
       gap: 16px;
     }
 
-    .timeline-card {
-      overflow: hidden;
+    .timeline-item {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
     }
 
-    .timeline-image {
-      min-height: 100%;
+    .timeline-photo {
+      min-height: 220px;
       background-size: cover;
       background-position: center;
     }
 
     .timeline-content {
-      padding: 24px;
-    }
-
-    .year-badge {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(96,165,250,0.14);
-      border: 1px solid rgba(96,165,250,0.3);
-      color: #dbeafe;
-      font-size: 14px;
-      margin-bottom: 12px;
+      padding: 22px;
     }
 
     .timeline-content h3 {
       margin: 0 0 8px;
       font-size: 28px;
-      letter-spacing: -0.03em;
+    }
+
+    .timeline-content p {
+      margin: 0 0 14px;
+      color: var(--soft);
     }
 
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0 16px;
+      gap: 8px;
     }
 
     .meta span {
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--line);
+      background: var(--card-2);
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 600;
     }
 
     .gallery {
@@ -326,351 +215,212 @@
 
     .gallery-item {
       overflow: hidden;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
     }
 
-    .gallery-photo {
+    .gallery-item .photo {
       aspect-ratio: 4 / 3;
       background-size: cover;
       background-position: center;
     }
 
-    .gallery-caption {
-      padding: 16px 18px 18px;
+    .gallery-item .caption {
+      padding: 16px;
+      color: var(--soft);
     }
 
-    .gallery-caption h3 {
-      margin: 0 0 6px;
-      font-size: 18px;
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
     }
 
-    .gallery-caption p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .info-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .info-panel {
-      padding: 24px;
-    }
-
-    .info-panel h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
-
-    .info-panel p, .info-panel li {
-      color: var(--muted);
-    }
-
-    .info-panel code {
-      color: #dbeafe;
-      background: rgba(255,255,255,0.05);
-      padding: 2px 8px;
-      border-radius: 8px;
+    .info-box ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--soft);
     }
 
     footer {
-      padding: 18px 0 50px;
-      color: var(--muted);
+      padding: 32px 0 46px;
+      color: var(--soft);
+      text-align: center;
     }
 
-    .footer-box {
-      padding: 22px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .info-layout,
-      .timeline-card,
-      .cards,
+    @media (max-width: 900px) {
+      .hero-box,
+      .grid-3,
       .gallery,
-      .stats {
+      .timeline-item {
         grid-template-columns: 1fr;
       }
 
-      .timeline-card {
-        display: block;
-      }
-
-      .timeline-image {
-        min-height: 240px;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      nav {
-        display: none;
+      .timeline-photo {
+        min-height: 220px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top">
-        <span class="brand-mark">GS</span>
-        <span>Gruppe Stilt</span>
-      </a>
-      <nav>
-        <a href="#historie">Historie</a>
-        <a href="#busser">Busser</a>
-        <a href="#galleri">Galleri</a>
-        <a href="#legg-til">Legg til mer</a>
-      </nav>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo">Gruppe Stilt</div>
+      <a class="back-btn" href="index.html">← Tilbake</a>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container hero-box">
         <div>
-          <div class="eyebrow">Russebuss-arkiv • Gruppe Stilt</div>
-          <h1>Historien til busser, år, steder og folk.</h1>
-          <p class="lead">
-            En nettside for å samle historien til bussene som har vært innom eller vært en del av Gruppe Stilt. Her kan du vise hvilke busser som gikk hvilke år, hvor de kom fra, bilder, detaljer og egne undersider senere.
+          <h1>Gruppe Stilt</h1>
+          <p>
+            Her finner du info om bussene som hører til Gruppe Stilt, hvilke år de gikk,
+            hvor de kom fra, bilder, og litt historikk om hver buss.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#busser">Se bussene</a>
-            <a class="btn btn-secondary" href="#legg-til">Hvordan legge til flere sider</a>
-          </div>
-
-          <div class="stats">
-            <div class="stat">
-              <strong>3</strong>
-              <span>Eksempelbusser</span>
-            </div>
-            <div class="stat">
-              <strong>2019–2026</strong>
-              <span>År du kan fylle inn</span>
-            </div>
-            <div class="stat">
-              <strong>1</strong>
-              <span>Samlet arkivside</span>
-            </div>
-            <div class="stat">
-              <strong>∞</strong>
-              <span>Mulighet for flere pages</span>
-            </div>
+          <div class="tag-row">
+            <div class="tag">Busser</div>
+            <div class="tag">Årstall</div>
+            <div class="tag">Skoler</div>
+            <div class="tag">Bilder</div>
           </div>
         </div>
+        <div class="hero-image"></div>
+      </div>
+    </section>
 
-        <div class="hero-card">
-          <div class="hero-image">
-            <p class="hero-image-note">
-              Bytt dette bildet til et ekte bilde av bussen, gruppa eller et collage som representerer Gruppe Stilt.
-            </p>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Om Gruppe Stilt</h2>
+        <p class="section-text">
+          Denne siden er laget som en oversikt over bussene i Gruppe Stilt. Her kan du samle
+          navn på bussene, hvilken skole eller hvilket område de kom fra, hvilket år de kjørte,
+          og annen info som gjør det lett å se historikken.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Historikk</h3>
+            <p>Samle eldre og nyere busser på ett sted så folk får oversikt over utviklingen over flere år.</p>
+          </div>
+          <div class="card">
+            <h3>Info</h3>
+            <p>Legg inn bussnavn, år, skole, sted, tema og korte beskrivelser av hver buss.</p>
+          </div>
+          <div class="card">
+            <h3>Bilder</h3>
+            <p>Bruk ekte bilder av bussene for å gjøre siden mye mer levende og ekte.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="historie">
+    <section>
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Hva nettsiden er for</h2>
-            <p>
-              Dette oppsettet er laget for at du enkelt skal kunne vise historien til flere russebusser over tid. Den fungerer både som infoside, mini-arkiv og utgangspunkt for flere undersider senere.
-            </p>
-          </div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Busser per år</h3>
-            <p>
-              Vis hvilke busser som var med i Gruppe Stilt hvert år, og gjør det lett å bla gjennom historikken.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Hvor de var fra</h3>
-            <p>
-              Legg inn by, skole, område eller annen tilknytning for hver buss så folk skjønner bakgrunnen.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Bilder og minner</h3>
-            <p>
-              Ha egne bildeblokker for hver buss eller årgang, og bygg ut med egne undersider etter hvert.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="busser">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Bussene i arkivet</h2>
-            <p>
-              Under er tre eksempelblokker. Du kan bare kopiere én av disse og endre år, navn, sted, tekst og bilde for å legge til flere busser.
-            </p>
-          </div>
-        </div>
+        <h2 class="section-title">Busser</h2>
+        <p class="section-text">
+          Under kan du føre opp bussene. Bare kopier en blokk og bytt ut tekst og bilde når du vil legge til flere.
+        </p>
 
         <div class="timeline">
-          <article class="timeline-card">
-            <div class="timeline-image" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80');"></div>
+          <article class="timeline-item">
+            <div class="timeline-photo" style="background-image:url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="timeline-content">
-              <span class="year-badge">2026</span>
-              <h3>Gruppe Stilt – Eksempelbuss A</h3>
+              <h3>Eksempelbuss 2026</h3>
+              <p>
+                Her kan du skrive kort om bussen, hva den het, hva slags profil den hadde,
+                og hvorfor den var en del av Gruppe Stilt.
+              </p>
               <div class="meta">
+                <span>År: 2026</span>
                 <span>Fra: Oslo</span>
                 <span>Skole: Fyll inn</span>
-                <span>Status: Aktiv / tidligere</span>
               </div>
-              <p>
-                Her skriver du kort info om bussen. For eksempel hvem de var, hva slags profil de hadde, om de var sentrale i gruppa og hva som gjorde akkurat denne bussen spesiell.
-              </p>
-              <p>
-                Du kan også linke videre til en egen underside senere, for eksempel <code>busser/2026-eksempelbuss-a.html</code>.
-              </p>
             </div>
           </article>
 
-          <article class="timeline-card">
-            <div class="timeline-image" style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80');"></div>
+          <article class="timeline-item">
+            <div class="timeline-photo" style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="timeline-content">
-              <span class="year-badge">2024</span>
-              <h3>Gruppe Stilt – Eksempelbuss B</h3>
+              <h3>Eksempelbuss 2025</h3>
+              <p>
+                Denne blokken passer for en annen buss. Du kan skrive litt om hvem de var,
+                hvor de kom fra og om det er noe spesielt folk burde vite.
+              </p>
               <div class="meta">
+                <span>År: 2025</span>
                 <span>Fra: Bærum</span>
-                <span>Skole: Fyll inn</span>
-                <span>Tema: Fyll inn</span>
+                <span>Status: Tidligere</span>
               </div>
-              <p>
-                Denne blokken kan brukes til å forklare hvor bussen var fra, hvor lenge den var en del av miljøet og eventuelle høydepunkter, bilder eller russetidsminner.
-              </p>
-              <p>
-                Legg gjerne inn hvem som eide bussen, bussnavn og om den var en videreføring av en tidligere buss.
-              </p>
             </div>
           </article>
 
-          <article class="timeline-card">
-            <div class="timeline-image" style="background-image:url('https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=1200&q=80');"></div>
+          <article class="timeline-item">
+            <div class="timeline-photo" style="background-image:url('https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=1200&q=80');"></div>
             <div class="timeline-content">
-              <span class="year-badge">2022</span>
-              <h3>Gruppe Stilt – Eksempelbuss C</h3>
+              <h3>Eksempelbuss 2024</h3>
+              <p>
+                Passer for eldre bussårganger også. Legg gjerne inn tema, farger, kjent navn
+                eller annen kort historikk.
+              </p>
               <div class="meta">
+                <span>År: 2024</span>
                 <span>Fra: Asker</span>
                 <span>Skole: Fyll inn</span>
-                <span>Merknad: Tidligere årgang</span>
               </div>
-              <p>
-                Denne kan brukes for eldre årganger. Skriv kort om tilhørighet, stil, farger, eventuelle samarbeid og hva folk bør vite om akkurat denne bussen.
-              </p>
-              <p>
-                Når du får ekte bilder, bytter du bare bildelenken i <code>background-image:url(...)</code>.
-              </p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="galleri">
+    <section>
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Bilder og galleri</h2>
-            <p>
-              Dette er en enkel galleriseksjon du kan bruke til stemningsbilder, bussbilder, detaljer og throwbacks.
-            </p>
-          </div>
-        </div>
+        <h2 class="section-title">Galleri</h2>
+        <p class="section-text">
+          Her kan du legge inn bilder av bussene, detaljer, treff eller gamle throwbacks.
+        </p>
 
         <div class="gallery">
-          <article class="gallery-item">
-            <div class="gallery-photo" style="background-image:url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="gallery-caption">
-              <h3>Bussbilde 1</h3>
-              <p>Bytt ut med ekte bilde og en liten forklaring.</p>
-            </div>
-          </article>
-          <article class="gallery-item">
-            <div class="gallery-photo" style="background-image:url('https://images.unsplash.com/photo-1472653816316-3ad6f10a6592?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="gallery-caption">
-              <h3>Bussbilde 2</h3>
-              <p>Perfekt for gruppebilde, treff eller interiør.</p>
-            </div>
-          </article>
-          <article class="gallery-item">
-            <div class="gallery-photo" style="background-image:url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1000&q=80');"></div>
-            <div class="gallery-caption">
-              <h3>Bussbilde 3</h3>
-              <p>Kan brukes til eldre årganger og throwback-bilder.</p>
-            </div>
-          </article>
+          <div class="gallery-item">
+            <div class="photo" style="background-image:url('https://russehjelpen.no/images/vehicle/yZknSaVB5iANbumqWY8o.jpg?p=lg');"></div>
+            <div class="caption">Bilde 1 – bytt ut med ekte bussbilde</div>
+          </div>
+          <div class="gallery-item">
+            <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1000&q=80');"></div>
+            <div class="caption">Bilde 2 – gruppebilde eller bussfront</div>
+          </div>
+          <div class="gallery-item">
+            <div class="photo" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80');"></div>
+            <div class="caption">Bilde 3 – eldre årgang eller detaljbilde</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="legg-til">
+    <section>
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Bygget for å legge til flere pages</h2>
-            <p>
-              Jeg har satt dette opp så det blir lett å utvide. Du kan både legge til flere bussblokker på forsiden og lage egne HTML-sider for hver buss eller hvert år.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-layout">
-          <article class="info-panel">
-            <h3>Legg til ny buss på forsiden</h3>
-            <p>
-              Kopier en hel <code>&lt;article class="timeline-card"&gt; ... &lt;/article&gt;</code>-blokk, lim den inn under de andre og endre:
-            </p>
-            <ul>
-              <li>årstall</li>
-              <li>bussnavn</li>
-              <li>hvor den var fra</li>
-              <li>tekst</li>
-              <li>bilde</li>
-            </ul>
-          </article>
-
-          <article class="info-panel">
-            <h3>Lag egne undersider senere</h3>
-            <p>
-              Du kan lage en mappe som heter <code>busser</code> og lage filer som:
-            </p>
-            <ul>
-              <li><code>busser/2026-eksempelbuss-a.html</code></li>
-              <li><code>busser/2024-eksempelbuss-b.html</code></li>
-              <li><code>busser/2022-eksempelbuss-c.html</code></li>
-            </ul>
-            <p>
-              Deretter kan du linke fra forsiden til hver underside.
-            </p>
-          </article>
+        <div class="info-box">
+          <h2 class="section-title">Hva du kan legge inn</h2>
+          <ul>
+            <li>bussnavn</li>
+            <li>årstall</li>
+            <li>hvilken skole de var fra</li>
+            <li>område eller bydel</li>
+            <li>bilder</li>
+            <li>kort historikk</li>
+            <li>lenke til egen underside senere</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-box">
-        <strong>Gruppe Stilt</strong><br />
-        En nettside for å samle historien til bussene, årgangene og minnene. Bytt ut eksempeltekst og eksempelbilder med ekte innhold når du er klar.
-      </div>
-    </div>
+    Gruppe Stilt – oversikt over busser, år og historikk
   </footer>
 </body>
 </html>
